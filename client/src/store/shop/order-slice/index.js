@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { createSlice, createAsyncThunk } from"@reduxjs/toolkit"
 
-
+import baseURL from "@/lib/base";
 
 
 
@@ -23,7 +23,7 @@ export const createNewOrder = createAsyncThunk(
     "/order/createNewOrder",
     async (orderData) => {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/shop/order/create`,
+        `${baseURL}/shop/order/create`,
         orderData
       );
   
@@ -36,7 +36,7 @@ export const createNewOrder = createAsyncThunk(
     "/order/capturePayment",
     async ({ paymentId, payerId, orderId }) => {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/shop/order/capture`,
+        `${baseURL}/shop/order/capture`,
         {
           paymentId,
           payerId,
@@ -51,7 +51,7 @@ export const createNewOrder = createAsyncThunk(
     "/order/list",
     async (  userId ) => {
       const response = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/api/shop/order/list/${userId}`,
+        `${baseURL}/shop/order/list/${userId}`,
        
         {
           withCredentials: true, 
@@ -68,7 +68,7 @@ export const createNewOrder = createAsyncThunk(
     "/order/details",
     async (  orderId ) => {
       const response = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/api/shop/order/getOrderDetails/${orderId}`,
+        `${baseURL}/shop/order/getOrderDetails/${orderId}`,
        
         {
           withCredentials: true, 

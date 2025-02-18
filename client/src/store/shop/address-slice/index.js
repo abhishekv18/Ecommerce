@@ -7,7 +7,7 @@
 import axios from "axios";
 
 import { createSlice, createAsyncThunk } from"@reduxjs/toolkit"
-
+import baseURL from "@/lib/base";
 
 
 
@@ -22,7 +22,7 @@ export const addNewAddress = createAsyncThunk(
   "addAddress/addNewAddress",
   async (formData) => {
     const response = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/api/shop/address/add`,
+      `${baseURL}/shop/address/add`,
       formData,
       {
         headers: { 'Content-Type': "application/json" },
@@ -41,7 +41,7 @@ export const fetchAllAddress = createAsyncThunk(
 
 
       const result = await axios.get(
-      `${import.meta.env.VITE_BASE_URL}/api/shop/address/get/${userId}`,
+      `${baseURL}/shop/address/get/${userId}`,
       {
         withCredentials: true, 
       }
@@ -61,7 +61,7 @@ export const fetchAllAddress = createAsyncThunk(
 
 
       const result = await axios.delete(
-      `${import.meta.env.VITE_BASE_URL}/api/shop/address/delete/${addressId}`,
+      `${baseURL}/shop/address/delete/${addressId}`,
       {
         withCredentials: true, 
       }
@@ -80,7 +80,7 @@ export const fetchAllAddress = createAsyncThunk(
 
 
       const result = await axios.put(
-      `${import.meta.env.VITE_BASE_URL}/api/shop/address/edit/${addressId}`,formData,
+      `${baseURL}/shop/address/edit/${addressId}`,formData,
       
      
       );

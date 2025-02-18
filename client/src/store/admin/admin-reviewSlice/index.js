@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+import baseURL from "@/lib/base";
 import axios from "axios";
 
 const initialState = {
@@ -14,7 +16,7 @@ const initialState = {
 
 export const getReviewsAdmin = createAsyncThunk("/admin/getReviewsAdmin", async () => {
     const response = await axios.get(
-      `${import.meta.env.VITE_BASE_URL}/api/admin/adminReview/get`
+      `${baseURL}/admin/adminReview/get`
     );
   
     return response.data;

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { createSlice, createAsyncThunk } from"@reduxjs/toolkit"
-
+import baseURL from "@/lib/base";
 
 
 
@@ -23,7 +23,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
       });
 
       const result = await axios.get(
-      `${import.meta.env.VITE_BASE_URL}/api/shop/products/get?${query}`
+      `${baseURL}/shop/products/get?${query}`
       );
   
       return result?.data;
@@ -39,7 +39,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
    
 
       const result = await axios.get(
-      `${import.meta.env.VITE_BASE_URL}/api/shop/products/get/${id}`
+      `${baseURL}/shop/products/get/${id}`
       );
   
       return result?.data;

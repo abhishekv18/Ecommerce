@@ -1,7 +1,7 @@
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import baseURL from "@/lib/base";
 const initialState = {
   isAuthenticated: false,
   isLoading: true,
@@ -13,7 +13,7 @@ export const registerUser = createAsyncThunk(
 
   async (formData) => {
     const response = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/api/auth/register`,
+      `${baseURL}/auth/register`,
       formData,
       {
         headers: { 'Content-Type': "application/json" },
@@ -29,7 +29,7 @@ export const loginUser = createAsyncThunk(
 
   async (formData) => {
     const response = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/api/auth/login`,
+      `${baseURL}/auth/login`,
       formData,
       {
         withCredentials: true,
@@ -45,7 +45,7 @@ export const logoutUser = createAsyncThunk(
 
   async () => {
     const response = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/api/auth/logout`,
+      `${baseURL}/auth/logout`,
       {},
       {
         withCredentials: true,
@@ -61,7 +61,7 @@ export const checkAuth = createAsyncThunk(
 
   async () => {
     const response = await axios.get(
-      `${import.meta.env.VITE_BASE_URL}/api/auth/check-auth`,
+      `${baseURL}/auth/check-auth`,
       {
         withCredentials: true,
         headers: {

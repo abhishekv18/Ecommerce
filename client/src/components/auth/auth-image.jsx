@@ -3,7 +3,7 @@ import { Label } from "../ui/label";
 import axios from "axios";
 import { Button } from "../ui/button";
 import { FileIcon, SmileIcon, XIcon } from "lucide-react";
-
+import baseURL from "@/lib/base";
 function AuthImageUpload({imageFile,setImageFile,uploadedImageUrl, setUploadedImageUrl }) {
     const inputRef=useRef(null);
    function handleImageFileChange(event){
@@ -19,7 +19,7 @@ function AuthImageUpload({imageFile,setImageFile,uploadedImageUrl, setUploadedIm
      const data=new FormData();
     data.append('file',imageFile)
     const response = await axios.post(
-       `${import.meta.env.VITE_BASE_URL}/api/auth/image`,
+       `${baseURL}/auth/image`,
        data
      );
      console.log(response, "response");

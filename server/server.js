@@ -16,6 +16,7 @@ const adminOrderRoute =require('./routes/admin/order-route');
 const shopSearchRoute =require('./routes/shop/search-routes');
 const shopReviewRoute =require('./routes/shop/review-route');
 const adminReviewRoute =require('./routes/admin/adminReview-route');
+const path=require('path');
 // create a data bse connection
 
 // create a sep file and then import
@@ -33,6 +34,7 @@ mongoose
 const app=express();
 //2
 const PORT = process.env.PORT || 5000;
+const _dirname = path.resolve();
 
 
 app.use(
@@ -64,6 +66,15 @@ app.use('/api/shop/search',shopSearchRoute);
 app.use('/api/shop/review',shopReviewRoute);
 app.use('/api/admin/adminReview',adminReviewRoute);
 
+
+if(process.env.NODE_ENV==="production"){
+    app.use(express.static(path.join(_dirname, "../client/dist")));
+
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(_dirname, "../client", "dist", "index.html"));
+      });
+}
 
 
 app.listen(PORT,()=> console.log(`server is running${PORT}`));
