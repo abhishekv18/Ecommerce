@@ -21,7 +21,6 @@ const path=require('path');
 
 // create a sep file and then import
 
-
 mongoose
 .connect(process.env.MONGO_URL)
 .then(()=>console.log("Mongodb Connect"))
@@ -77,5 +76,8 @@ if(process.env.NODE_ENV==="production"){
 }
 
 
-app.listen(PORT,()=> console.log(`server is running${PORT}`));
+app.listen(PORT,()=> 
+    console.log(`server is running${PORT}`)
+//mongoose.connect(process.env.MONGO_URL).then(()=>console.log("Mongodb Connect")).catch(error=>console.log(error)
+);
 
