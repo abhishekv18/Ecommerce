@@ -5,8 +5,8 @@
   "scripts": {
    
     "dev": "nodemon server.js",
-    "start": "server.js"
-    
+    "start": "node server.js"
+
   },
   "author": "abhishek",
   "license": "ISC",
